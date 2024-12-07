@@ -7,7 +7,7 @@ The official implementation of the paper.
 [Ranking-aware adapter for text-driven image ordering with CLIP](...)
 
 ---
-## How to ...
+## How to xxx
 We have the plan to release the pre-trained model and related code. Stay tuned!
 
 ---
