@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "rankingclip"
+version = "0.1.0"
+description = ""
+authors = ["seanyu <weihsiang.yu@gmail.com>"]
+packages = [{include = "learn_to_compare"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ipython = "*"
+ipykernel = "*"
+numpy = "*"
+pandas = "*"
+matplotlib = "*"
+opencv-python = "*"
+pydantic = "^1.10.2"
+pydantic_argparse = "*"
+rich = "*"
+transformers = "*"  # for CoCa/HuggingFace
+datasets = "*"  # HuggingFace
+pycocotools = "*"
+plotnine = "*"
+scikit-learn = "*"
+einops = "*"
+yacs = "*"
+h5py = "*"
+poethepoet = "*"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "*"
+flake8 = "^4.0.1"
+isort = "*"
+pytest-cov = "*"
+
+[tool.poetry.group.cuda]
+optional = true
+
+[tool.poetry.group.cuda.dependencies]
+torch = { version = "2.0.1", source = "torch+cu117" }
+torchvision = { version = "0.15.2", source = "torch+cu117" }
+transformers = "*"  # for CoCa
+sympy = "*"
+
+[[tool.poetry.source]]
+name = "torch+cu117"
+url = "https://download.pytorch.org/whl/cu117"
+priority = "supplemental"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
