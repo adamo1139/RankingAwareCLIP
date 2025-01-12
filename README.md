@@ -16,7 +16,13 @@ $ poetry run pip install libs/open_clip
 
 
 ## Run Inference
-...
+```
+$ CUDA_DEVICE_ORDER=PCI_BUS_ID CUDA_VISIBLE_DEVICES=0 poetry run python \
+    scripts/inference.py \
+    --config-path ./configs/model-config.json \
+    --data-to-inference ./examples/example-count-df.csv \
+    --checkpoint-path [PATH-TO-CHECKPOINT]
+```
 
 Here are some pretrained checkpoints.
 1. [Object count sorting](...)
