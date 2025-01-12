@@ -1,0 +1,1 @@
+../libs/open_clip/src/open_clip/clip_model_adapter.py

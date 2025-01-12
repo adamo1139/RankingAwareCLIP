@@ -1,0 +1,31 @@
+{
+    "embed_dim": 640,
+    "vision_cfg": {
+        "image_size": 224,
+        "layers": 12,
+        "width": 896,
+        "patch_size": 16,
+        "output_tokens": true
+    },
+    "text_cfg": {
+        "context_length": 77,
+        "vocab_size": 49408,
+        "width": 640,
+        "heads": 10,
+        "layers": 12,
+        "output_tokens": true
+    },
+    "adapter_cfg": {
+        "num_layers": 2,
+        "d_model": 640,
+        "n_head": 8,
+        "num_learnable_text_tokens": 32,
+        "cross_attn_method": "cross-qkv",
+        "reg_token_method": "cross-attn-sum",
+        "adapter_attention_pooler": "rank-attn",
+        "n_reg_tokens": 16
+    },
+    "misc_cfg": {
+        "model_version": "clip-adapter-v2"
+    }
+}

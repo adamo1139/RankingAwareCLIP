@@ -9,14 +9,15 @@ packages = [{include = "learn_to_compare"}]
 python = "^3.9"
 ipython = "*"
 ipykernel = "*"
-numpy = "*"
+numpy = "^1.26.4"
 pandas = "*"
+loguru = "*"
 matplotlib = "*"
 opencv-python = "*"
 pydantic = "^1.10.2"
 pydantic_argparse = "*"
 rich = "*"
-transformers = "*"  # for CoCa/HuggingFace
+transformers = "*"
 datasets = "*"  # HuggingFace
 pycocotools = "*"
 plotnine = "*"
