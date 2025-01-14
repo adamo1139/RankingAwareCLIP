@@ -82,10 +82,13 @@ def main():
         task_results=results,
         is_ordinal_regression=args.is_ordinal_regression,
     )
-    print(result_stats)
     if args.output_path is not None:
         with open(f'{args.output_path}.json', 'w') as f:
             json.dump(result_stats, f, indent=4)
+    print(result_stats)
+    for metric_name in ['PLCC', 'SRCC', 'MAE']:
+        classwise_result = [r[metric_name] for r in result_stats]
+        print(f'Mean {metric_name}: {np.mean(classwise_result):.3f}')
 
 
 class Arguments(pydantic.BaseModel):
@@ -218,18 +221,6 @@ def run_task_stats(
         result_dict['task_name'] = task_name
         result_dict['sub-category'] = sub_category
         results.append(result_dict)
-    # Run by images
-    result_dict = evaluate_clip_on_count(
-        y_trues=np.concatenate([tr['y_trues'] for tr in task_results.values()]),
-        y_preds=np.concatenate([
-            np.round(tr['y_preds']) if is_ordinal_regression else tr['y_preds']
-            for tr in task_results.values()
-        ]),
-    )
-    result_dict['task_name'] = task_name
-    result_dict['sub-category'] = '_all_'
-
-    results.append(result_dict)
     return results
 
 

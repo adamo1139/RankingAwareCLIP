@@ -25,7 +25,7 @@ $ CUDA_DEVICE_ORDER=PCI_BUS_ID CUDA_VISIBLE_DEVICES=0 poetry run python \
 ```
 
 Here are some pretrained checkpoints.
-1. [Object count sorting](...)
+1. [Object count sorting](https://drive.google.com/file/d/1sX1maP03MiwCeZTHvQvmwkswdnWvjfU2/view?usp=sharing)
 2. [Image quality assessment (MOS)](...)
 3. [Multiple tasks (count, MOS, age, hci)](...)
 
