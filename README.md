@@ -26,12 +26,12 @@ $ CUDA_DEVICE_ORDER=PCI_BUS_ID CUDA_VISIBLE_DEVICES=0 poetry run python \
 
 Here are some pretrained checkpoints.
 1. [Object count sorting](https://drive.google.com/file/d/1sX1maP03MiwCeZTHvQvmwkswdnWvjfU2/view?usp=sharing)
-2. [Image quality assessment (MOS)](...)
-3. [Multiple tasks (count, MOS, age, hci)](...)
+2. [Image quality assessment (MOS)](https://drive.google.com/file/d/1H1byD2V5bUwWoHGG7Ih3wYQp4adfa7oh/view?usp=sharing)
+3. [Multiple tasks (count, MOS, age, hci)](https://drive.google.com/file/d/11IA5aVDTG_y0ZxXWZJC9vmjeJpC_0Y08/view?usp=sharing)
 
 ## To do list
 The repo is kept updating, stay tuned!
 - [x] Inference & Demo code
-- [ ] Upload checkpoints to public accessible cloud.
+- [x] Upload checkpoints to public accessible cloud.
 - [ ] Visualization examples and more details.
 - [ ] Training code
