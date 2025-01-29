@@ -97,15 +97,12 @@ class L2RCLIP(CLIP):
     ):
         image_features = self.encode_image(
             image,
-            # normalize=True,
         )  # (N, d_model, h, w)
         text_features, text_embs = self.encode_text(
             text,
             output_tokens=True,
-            # normalize=True,
         )  # 1:(N, ctx_t, d_model)
 
-        # print(f'DEBUG: {image_features.shape=}, {text_features.shape=}')
         image_embs = image_features.clone()
         if len(image_embs.shape) == 4:
             # CNN-backbone (ViT: B, n_ctx, D -- no need additional operation)
@@ -295,15 +292,12 @@ class PairwiseDiffBlockV2(nn.Module):
         self.pre_linear_block = nn.Sequential(*nn.ModuleList([
             # norm the input (if not normed)
             norm_layer(input_dim),
-            # sub-network
             nn.Linear(input_dim, input_dim),
             norm_layer(input_dim),
             nn.ReLU(),
-            ##
             nn.Linear(input_dim, input_dim),
             norm_layer(input_dim),
             nn.ReLU(),
-            ##
             nn.Linear(input_dim, input_dim),
             norm_layer(input_dim),
             nn.ReLU(),
@@ -350,40 +344,6 @@ class MLPLayer(nn.Module):
         x = self.pre_linear_block(x)
         x = self.output_head(x)
         return x
-
-
-class RankawareAttention(nn.Module):
-    def __init__(
-        self,
-        d_model: int,
-        norm_layer: Callable,
-    ):
-        super().__init__()
-        self.ln_q = norm_layer(d_model)
-        self.ln_kv = norm_layer(d_model)
-
-    def forward(
-        self,
-        q_x: torch.Tensor,  # [1, n.Q, D]
-        kv_x: torch.Tensor,  # [N, n.P, D]
-        return_attention: bool = False,
-    ):
-        _, n_query_tokens, latent_dim = q_x.shape
-        batch_size, n_patch_tokens, _ = kv_x.shape
-        q_x = q_x.expand(batch_size ** 2, -1, -1)
-
-        q_x = self.ln_q(q_x)
-        kv_x = self.ln_kv(kv_x)
-        kv_x = (kv_x.unsqueeze(1) - kv_x.unsqueeze(0)).view(-1, n_patch_tokens, latent_dim)
-
-        mat1 = q_x @ kv_x.mT  # batch matmul
-        mat1 = mat1 / math.sqrt(latent_dim)  # [N, n.Q, n.P]
-        attention = F.softmax(mat1, dim=-1)
-
-        values = attention @ kv_x
-        if return_attention:
-            return values, attention
-        return values
 
 
 class MultiHeadRankawareAttentionV2(nn.Module):

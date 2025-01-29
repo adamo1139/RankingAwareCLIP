@@ -11,6 +11,7 @@ artifacts/
 results/
 tmp/
 temp/
+data/
 notebooks/
 .ipynb_checkpoints/
 log/
