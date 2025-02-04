@@ -61,16 +61,13 @@ $ poetry run python -m training.main \
 ```
 
 ## Citation
-If you use and found our work is useful, please consider citing
+If you found our work is useful, please consider citing
 ```
 @misc{yu2024rankingawareadaptertextdrivenimage,
       title={Ranking-aware adapter for text-driven image ordering with CLIP},
       author={Wei-Hsiang Yu and Yen-Yu Lin and Ming-Hsuan Yang and Yi-Hsuan Tsai},
+      booktitle={The Thirteenth International Conference on Learning Representations},
       year={2024},
-      eprint={2412.06760},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2412.06760},
 }
 ```
 
