@@ -67,7 +67,7 @@ If you found our work is useful, please consider citing
       title={Ranking-aware adapter for text-driven image ordering with CLIP},
       author={Wei-Hsiang Yu and Yen-Yu Lin and Ming-Hsuan Yang and Yi-Hsuan Tsai},
       booktitle={The Thirteenth International Conference on Learning Representations},
-      year={2024},
+      year={2025},
 }
 ```
 
